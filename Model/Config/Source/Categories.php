@@ -38,7 +38,7 @@ class Categories implements \Magento\Framework\Option\ArrayInterface {
      */
     public function toOptionArray()
     {
-        $cacheKey = sprintf('%d-%d-%d-%d', 1, false, false, true);
+        $cacheKey = sprintf('%d-%d-%d-%d', 2, false, false, true);
         if (isset($this->_storeCategories[$cacheKey])) {
             return $this->_storeCategories[$cacheKey];
         }
@@ -46,18 +46,22 @@ class Categories implements \Magento\Framework\Option\ArrayInterface {
         /**
          * Check if parent node of the store still exists
          */
-        $category = $this->_categoryFactory->create();
-        $storeCategories = $category->getCategories(1, $recursionLevel = 1, false, false, true);
-
-        $this->_storeCategories[$cacheKey] = $storeCategories;
+        $categoryFactor = $this->_categoryFactory->create();
+        $storeCategories = $categoryFactor->getCategories(1, $recursionLevel = 1, false, false, true);
 
         $resultArray = [];
         foreach($storeCategories as $category) {
             $resultArray[$category->getId()] = $category->getName();
+            $subCategories = $categoryFactor->getCategories($category->getId(), $recursionLevel = 1, false, false, true);
+            foreach($subCategories as $subCategory) {
+                $resultArray[$subCategory->getId()] = " - " . $subCategory->getName();
+            }
         }
 		
 		$resultArray['current_category_children'] = __('Current Category Children');
 		$resultArray['current_category_parent_children'] = __('Current Category Parent Children');
+
+        $this->_storeCategories[$cacheKey] = $resultArray;
 
         return $resultArray;
     }

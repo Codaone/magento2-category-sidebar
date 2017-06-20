@@ -1,0 +1,15 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Sebwite\Sidebar\Block\Topmenu
+ */
+?>
+<?php $_menu = $block->getHtml('level-top') ?>
+
+<nav class="navigation" data-action="navigation">
+	<ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+		<?php echo $_menu; ?>
+		<?php echo $block->getChildHtml(); ?>
+	</ul>
+</nav>
