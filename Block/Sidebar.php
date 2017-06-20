@@ -1,4 +1,6 @@
-<?php namespace Sebwite\Sidebar\Block;
+<?php
+
+namespace Sebwite\Sidebar\Block;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product;
@@ -41,25 +43,25 @@ class Sidebar extends Template
     /** @var \Magento\Catalog\Helper\Output */
     private $helper;
 
-    /**
-     * @param Template\Context                                        $context
-     * @param \Magento\Catalog\Helper\Category                        $categoryHelper
-     * @param \Magento\Framework\Registry                             $registry
-     * @param \Magento\Catalog\Model\Indexer\Category\Flat\State      $categoryFlatState
-     * @param \Magento\Catalog\Model\CategoryFactory                  $categoryFactory
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface      $scopeConfig
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollectionFactory
-     * @param \Magento\Framework\App\ObjectManager                    $objectManager
-     *
-     * @internal param array $data
-     */
+	/**
+	 * @param Template\Context                                        $context
+	 * @param \Magento\Catalog\Helper\Category                        $categoryHelper
+	 * @param \Magento\Framework\Registry                             $registry
+	 * @param \Magento\Catalog\Model\Indexer\Category\Flat\State      $categoryFlatState
+	 * @param \Magento\Catalog\Model\CategoryFactory                  $categoryFactory
+	 * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollectionFactory
+	 * @param \Magento\Catalog\Helper\Output                          $helper
+	 * @param array                                                   $data
+	 * @internal param \Magento\Framework\App\ObjectManager $objectManager
+	 *
+	 * @internal param array $data
+	 */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Catalog\Helper\Category $categoryHelper,
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollectionFactory,
         \Magento\Catalog\Helper\Output $helper,
         $data = [ ]
