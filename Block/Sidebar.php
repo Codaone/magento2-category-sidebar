@@ -57,7 +57,6 @@ class Sidebar extends Template
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-		\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollectionFactory,
         \Magento\Catalog\Helper\Output $helper,
 		\Sebwite\Sidebar\Helper\Data $dataHelper,
@@ -277,4 +276,10 @@ class Sidebar extends Template
     {
         return $this->_categoryHelper->getCategoryUrl($category);
     }
+
+	public function getBlockTitle() {
+		return $this->_scopeConfig->getValue(
+			'sebwite_sidebar/general/block-title'
+		);
+	}
 }
