@@ -110,6 +110,7 @@ class Sidebar extends Template
         return $storeCategories;
     }
 
+
     /**
      * getSelectedRootCategory method
      *
@@ -174,7 +175,7 @@ class Sidebar extends Template
                 {
 
                     $html .= '<li class="level' . $level . ($this->isActive($childCategory) ? ' active' : '') . '">';
-                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '" class="' . ($this->isActive($childCategory) ? 'is-active' : '') . '">' . $childCategory->getName() . '</a>';
+                    $html .= '<a href="' . $this->getCategoryUrl($childCategory) . '" title="' . $childCategory->getName() . '" class="' . ($this->isActive($childCategory) ? 'active' : '') . '">' . $childCategory->getName() . '</a>';
 
                     if ( $childCategory->hasChildren() )
                     {
@@ -215,10 +216,10 @@ class Sidebar extends Template
     {
         if ( $this->categoryFlatConfig->isFlatEnabled() && $category->getUseFlatResource() )
         {
-            return (array)$category->getChildrenNodes();
+            return (array)$category->getAllChildNodes();
         }
 
-        return $category->getChildrenCategories();
+        return $category->getChildren();
     }
 	
 
@@ -227,7 +228,7 @@ class Sidebar extends Template
      *
      * @param \Magento\Catalog\Model\Category $category
      *
-     * @return Category
+     * @return bool
      */
     public function isActive($category)
     {
@@ -255,7 +256,7 @@ class Sidebar extends Template
         }
 
         // Check if a subcategory of this category is active
-        $childrenIds = $category->getAllChildren(true);
+        $childrenIds = array_keys((array)$category->getAllChildNodes());
         if ( !is_null($childrenIds) AND in_array($activeCategory->getId(), $childrenIds) )
         {
             return true;
