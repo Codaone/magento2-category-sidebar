@@ -15,22 +15,22 @@
                        showInStore="0">
                     <label>Is Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>				
+                </field>
                 <field id="category" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>Select Sidebar Category</label>
                     <source_model>Sebwite\Sidebar\Model\Config\Source\Categories</source_model>
                 </field>
-                <field id="top-category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="top_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Select Top Category</label>
                     <source_model>Sebwite\Sidebar\Model\Config\Source\Categories</source_model>
                 </field>
-                <field id="categorydepth" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+                <field id="category_depth" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>Select Category Depth</label>
                     <source_model>Sebwite\Sidebar\Model\Config\Source\Depth</source_model>
                 </field>
-                <field id="block-title" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                <field id="block_title" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>Block title</label>
                 </field>
