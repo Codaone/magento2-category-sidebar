@@ -280,7 +280,7 @@ class Sidebar extends Template
 
 	public function getBlockTitle() {
 		return $this->_scopeConfig->getValue(
-			'sebwite_sidebar/general/block-title'
+			'sebwite_sidebar/general/block_title'
 		);
 	}
 }
